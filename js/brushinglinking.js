@@ -116,7 +116,8 @@ d3.csv("data/iris.csv").then((data) => {
     //TODO: Add brush1 to svg1
     d3.select("#vis-holder")
         .call( d3.brush()
-          .extent([[0,0], [400,400]]));
+          .extent([[0,0], [400,400]])
+          .on("start end", updateChart1));
   }
 
   //TODO: Scatterplot 2 (show Sepal width on x-axis and Petal width on y-axis)
@@ -182,10 +183,11 @@ d3.csv("data/iris.csv").then((data) => {
     //TODO: Define a brush (call it brush1)
     let brush1;
     
-    //TODO: Add brush1 to svg1
+    //TODO: Add brush2 to svg2
     d3.select("#vis-holder")
         .call(d3.brush()
-          .extent([[0,0], [400,400]]));
+          .extent([[0,0], [400,400]])
+          .on("start end", updateChart2));
   }
 
   //TODO: Barchart with counts of different species

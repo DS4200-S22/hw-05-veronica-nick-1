@@ -19,8 +19,15 @@ let myCircles1;
 //TODO: Initialize brush for Scatterplot2 and points. We will need these to be global.
 
 //TODO: append svg object to the body of the page to house bar chart 
+const svg3 = d3.select("#vis-holder")
+               .append("svg")
+               .attr("width", width )
+               .attr("height", height)
+               .attr("viewBox", [0, 0, width, height]); 
+
 
 //TODO: Initialize bars. We will need these to be global. 
+let bars;
 
 
 // Define color scale

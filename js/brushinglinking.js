@@ -122,6 +122,70 @@ d3.csv("data/iris.csv").then((data) => {
   //TODO: Scatterplot 2 (show Sepal width on x-axis and Petal width on y-axis)
   {
     // Scatterplot2 code here 
+    let xKey1 = "Sepal_Width";
+    let yKey1 = "Petal_Width";
+
+    // Find max x
+    let maxX1 = d3.max(data, (d) => { return d[xKey1]; });
+
+    // Create X scale
+    let x1 = d3.scaleLinear()
+                .domain([0,maxX1])
+                .range([margin.left, width-margin.right]); 
+    
+    // Add x axis 
+    svg2.append("g")
+        .attr("transform", `translate(0,${height - margin.bottom})`) 
+        .call(d3.axisBottom(x1))   
+        .attr("font-size", '20px')
+        .call((g) => g.append("text")
+                      .attr("x", width - margin.right)
+                      .attr("y", margin.bottom - 4)
+                      .attr("fill", "black")
+                      .attr("text-anchor", "end")
+                      .text(xKey1)
+      );
+
+    // Finx max y 
+    let maxY1 = d3.max(data, (d) => { return d[yKey1]; });
+
+    // Create Y scale
+    let y1 = d3.scaleLinear()
+                .domain([0, maxY1])
+                .range([height - margin.bottom, margin.top]); 
+
+    // Add y axis 
+    svg2.append("g")
+        .attr("transform", `translate(${margin.left}, 0)`) 
+        .call(d3.axisLeft(y1)) 
+        .attr("font-size", '20px') 
+        .call((g) => g.append("text")
+                      .attr("x", 0)
+                      .attr("y", margin.top)
+                      .attr("fill", "black")
+                      .attr("text-anchor", "end")
+                      .text(yKey1)
+      );
+
+    // Add points
+    const myCircles1 = svg2.selectAll("circle")
+                            .data(data)
+                            .enter()
+                              .append("circle")
+                              .attr("id", (d) => d.id)
+                              .attr("cx", (d) => x1(d[xKey1]))
+                              .attr("cy", (d) => y1(d[yKey1]))
+                              .attr("r", 8)
+                              .style("fill", (d) => color(d.Species))
+                              .style("opacity", 0.5);
+
+    //TODO: Define a brush (call it brush1)
+    let brush1;
+    
+    //TODO: Add brush1 to svg1
+    d3.select("#vis-holder")
+        .call(d3.brush()
+          .extent([[0,0], [400,400]]));
   }
 
   //TODO: Barchart with counts of different species

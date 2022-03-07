@@ -191,8 +191,65 @@ d3.csv("data/iris.csv").then((data) => {
   }
 
   //TODO: Barchart with counts of different species
+
   {
-    // Bar chart code here 
+
+
+    // Barchart code here 
+    let xKey1 = "Species";
+    let yKey1 = "Count";
+
+    // Find max y value to plot  
+let maxY1 = d3.max(data1, function(d) { return d.score; });
+
+// Create y scale   
+let yScale1 = d3.scaleLinear()
+            .domain([0,maxY1])
+            .range([height-margin.bottom,margin.top]); 
+
+// Create x scale
+let xScale1 = d3.scaleBand()
+            .domain(d3.range(data1.length))
+            .range([margin.left, width - margin.right])
+            .padding(0.1); 
+    
+    // Add x axis 
+    svg3.append("g")
+        .attr("transform", `translate(0,${height - margin.bottom})`) 
+        .call(d3.axisBottom(xScale1) 
+            .tickFormat(i => data1[i].name))  
+        .attr("font-size", '20px');
+
+    // Finx max y 
+    let maxY1 = d3.max(data, (d) => { return d[yKey1]; });
+
+    // Create Y scale
+    let y1 = d3.scaleLinear()
+                .domain([0, maxY1])
+                .range([height - margin.bottom, margin.top]); 
+
+    // Add y axis 
+    svg3.append("g")
+        .attr("transform", `translate(${margin.left}, 0)`) 
+        .call(d3.axisLeft(y1)) 
+        .attr("font-size", '20px');
+
+    // Add points
+    const bars = svg3.selectAll("rectangle")
+                            .data(data)
+                            .enter()
+                            .append("rect") 
+                             .attr("class", "bar") 
+                             .attr("x", (d,i) => xScale1(i)) 
+                             .attr("y", (d) => yScale1(d.score)) 
+                             .attr("height", (d) => (height - margin.bottom) - yScale1(d.score)) 
+                             .attr("width", xScale1.bandwidth()) 
+
+  
+    
+ 
+  }
+
   }
 
   //Brushing Code---------------------------------------------------------------------------------------------

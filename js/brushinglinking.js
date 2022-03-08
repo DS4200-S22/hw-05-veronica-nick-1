@@ -297,16 +297,4 @@ let xScale_bar = d3.scaleBand()
       return x0 <= cx && cx <= x1 && y0 <= cy && cy <= y1; // This return TRUE or FALSE depending on if the points is in the selected area
     };
 
-// svg3.selectAll(".bar") 
-//    .data(data_bars) 
-//    .enter()  
-//    // setting up the formatting for the chart, 
-//    // sets the x and y scales
-//    // sets the height and width of the visual 
-//    // adds functionality for visual 
-//    .append("rect") 
-//      .attr("class", "bar") 
-//      .attr("x", (d,i) => xScale1(i)) 
-//      .attr("y", (d) => yScale1(d.score)) 
-//      .attr("height", (d) => (height - margin.bottom) - yScale1(d.score)) 
-//      .attr("width", xScale1.bandwidth()); 
+

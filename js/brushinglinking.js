@@ -241,7 +241,7 @@ bars = svg3.selectAll(".bar")
              .attr("y", (d) => yScale_bar(maxY_bar)) 
              .attr("height", (d) => height - margin.bottom - (yScale_bar(maxY_bar))) 
              .attr("width", xScale_bar.bandwidth())
-             .style("fill", (d) => color(d.Species)) 
+             .style("fill", (d) => color(d.name)) 
 
 
 //(height - margin.bottom) - yScale_bar(d.count)

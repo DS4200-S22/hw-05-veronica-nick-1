@@ -120,10 +120,9 @@ d3.csv("data/iris.csv").then((data) => {
     let brush1;
     
     //TODO: Add brush1 to svg1
-    svg1.call(d3.select("#vis-holder")
-        .call( d3.brush()
+    svg1.call(d3.brush()
           .extent([[0,0], [400,400]])
-          .on("start end", updateChart1)));
+          .on("start end", updateChart1));
   }
 
   //TODO: Scatterplot 2 (show Sepal width on x-axis and Petal width on y-axis)

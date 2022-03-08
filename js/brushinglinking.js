@@ -207,12 +207,11 @@ d3.csv("data/iris.csv").then((data) => {
     {species: "virginica", count: 50}];
 
 
-    // Barchart code here 
-    let xKey1 = "Species";
-    let yKey1 = "Count";
+   
 
-    // Find max y value to plot  
-let maxY_bar = d3.max(count_data, function(d) { return d.score; });
+// Find max y 
+    let maxY_bar = d3.max(count_data, (d) => { return d.count; });
+
 
 // Create y scale   
 let yScale_bar = d3.scaleLinear()
@@ -232,8 +231,7 @@ let xScale_bar = d3.scaleBand()
             .tickFormat(i => count_data[i].name))  
         .attr("font-size", '20px');
 
-    // Find max y 
-    let maxY_bar = d3.max(count_data, (d) => { return d.count; });
+    
 
     // Create Y scale
     let y1 = d3.scaleLinear()

@@ -299,8 +299,7 @@ let xScale_bar = d3.scaleBand()
         y0 = brush_coords[0][1],
         y1 = brush_coords[1][1];
       return x0 <= cx && cx <= x1 && y0 <= cy && cy <= y1; // This return TRUE or FALSE depending on if the points is in the selected area
-    }
-});
+    };
 
 svg3.selectAll(".bar") 
    .data(data_bars) 

@@ -201,7 +201,7 @@ d3.csv("data/iris.csv").then((data) => {
    
 
 // Find max y 
-    let maxY_bar = d3.max(data_bars , (d) => { return d.count; });
+let maxY_bar = 50;
 
 
 // Create y scale   

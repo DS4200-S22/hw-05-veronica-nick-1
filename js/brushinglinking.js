@@ -121,7 +121,7 @@ d3.csv("data/iris.csv").then((data) => {
     
     //TODO: Add brush1 to svg1
     svg1.call(d3.brush()
-          .extent([[margin.left,margin.top], [svg1.width, svg1.height]])
+          .extent([[0, 0], [svg1.width, svg1.height]])
           .on("start end", updateChart1));
   }
 

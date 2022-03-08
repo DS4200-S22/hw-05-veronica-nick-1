@@ -195,10 +195,15 @@ d3.csv("data/iris.csv").then((data) => {
           .extent([[0,0], [400,400]])
           .on("start end", updateChart2));
   }
+}
 
   //TODO: Barchart with counts of different species
 
-  {
+  
+  const count_data = [
+    {species: "setosa", count: 50 },
+    {species: "versicolor", count: 50},
+    {species: "virginica", count: 50}];
 
 
     // Barchart code here 
@@ -206,7 +211,7 @@ d3.csv("data/iris.csv").then((data) => {
     let yKey1 = "Count";
 
     // Find max y value to plot  
-let maxY1 = d3.max(data1, function(d) { return d.score; });
+let maxY1 = d3.max(count_data, function(d) { return d.score; });
 
 // Create y scale   
 let yScale1 = d3.scaleLinear()
@@ -215,7 +220,7 @@ let yScale1 = d3.scaleLinear()
 
 // Create x scale
 let xScale1 = d3.scaleBand()
-            .domain(d3.range(data1.length))
+            .domain(d3.range(count_data.length))
             .range([margin.left, width - margin.right])
             .padding(0.1); 
     
@@ -223,11 +228,11 @@ let xScale1 = d3.scaleBand()
     svg3.append("g")
         .attr("transform", `translate(0,${height - margin.bottom})`) 
         .call(d3.axisBottom(xScale1) 
-            .tickFormat(i => data1[i].name))  
+            .tickFormat(i => count_data[i].name))  
         .attr("font-size", '20px');
 
-    // Finx max y 
-    let maxY1 = d3.max(data, (d) => { return d[yKey1]; });
+    // Find max y 
+    let maxY1 = d3.max(count_data, (d) => { return d.count; });
 
     // Create Y scale
     let y1 = d3.scaleLinear()
@@ -237,12 +242,12 @@ let xScale1 = d3.scaleBand()
     // Add y axis 
     svg3.append("g")
         .attr("transform", `translate(${margin.left}, 0)`) 
-        .call(d3.axisLeft(y1)) 
+        .call(d3.axisLeft(yScale1)) 
         .attr("font-size", '20px');
 
     // Add points
-    const bars = svg3.selectAll("rectangle")
-                            .data(data)
+    const bars = svg3.selectAll(".bar")
+                            .data(count_data)
                             .enter()
                             .append("rect") 
                              .attr("class", "bar") 
@@ -254,9 +259,7 @@ let xScale1 = d3.scaleBand()
   
     
  
-  }
-
-  }
+  
 
   //Brushing Code---------------------------------------------------------------------------------------------
     

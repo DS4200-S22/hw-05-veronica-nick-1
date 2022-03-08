@@ -2,3 +2,11 @@
 body {
   font-family: Arial;
 }
+
+<!-- style of selected circles -->
+<style>
+.selected {
+  fill: red;
+  opacity: 1
+}
+</style>

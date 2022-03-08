@@ -260,10 +260,19 @@ bars = svg3.selectAll(".bar")
       //TODO: Find coordinates of brushed region 
       extent = d3.event.selection
 
-      isBrushed = extent[0][0] <= circle.attr("cx") && extent[1][0] >= circle.attr("cx") && // Check X coordinate
-                  extent[0][1] <= circle.attr("cy") && extent[1][1] >= circle.attr("cy")
+      isBrushed = extent[0][0] <= myCircles1.attr("cx") && extent[1][0] >= myCircles1.attr("cx") && // Check X coordinate
+                  extent[0][1] <= myCircles1.attr("cy") && extent[1][1] >= myCircles1.attr("cy")
   
       //TODO: Give bold outline to all points within the brush region in Scatterplot1
+      myCircles1.classed("selected", isBrushed)
+
+
+      // if (isBrushed){
+      //   myCircles1.transition().duration(200).style("fill", "green")
+      // }
+      // else{
+      //   myCircles1.transition().duration(200).style("fill", "pink")
+      // }
 
       //TODO: Give bold outline to all points in Scatterplot2 corresponding to points within the brush region in Scatterplot1
     

@@ -200,17 +200,12 @@ d3.csv("data/iris.csv").then((data) => {
 
   //TODO: Barchart with counts of different species
 
-  
-  const count_data = [
-    {species: "setosa", count: 50 },
-    {species: "versicolor", count: 50},
-    {species: "virginica", count: 50}];
 
 
    
 
 // Find max y 
-    let maxY_bar = d3.max(count_data, (d) => { return d.count; });
+    let maxY_bar = d3.max(data_bars , (d) => { return d.count; });
 
 
 // Create y scale   
@@ -220,7 +215,7 @@ let yScale_bar = d3.scaleLinear()
 
 // Create x scale
 let xScale_bar = d3.scaleBand()
-            .domain(d3.range(count_data.length))
+            .domain(d3.range(data_bars.length))
             .range([margin.left, width - margin.right])
             .padding(0.1); 
     
@@ -228,7 +223,7 @@ let xScale_bar = d3.scaleBand()
     svg3.append("g")
         .attr("transform", `translate(0,${height - margin.bottom})`) 
         .call(d3.axisBottom(xScale_bar) 
-            .tickFormat(i => count_data[i].name))  
+            .tickFormat(i => data_bars[i].name))  
         .attr("font-size", '20px');
 
     
@@ -245,8 +240,8 @@ let xScale_bar = d3.scaleBand()
         .attr("font-size", '20px');
 
     // Add points
-    const bars = svg3.selectAll(".bar")
-                            .data(count_data)
+    bars = svg3.selectAll(".bar")
+                            .data(data_bars)
                             .enter()
                             .append("rect") 
                              .attr("class", "bar") 

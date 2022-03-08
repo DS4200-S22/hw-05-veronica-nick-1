@@ -196,13 +196,10 @@ d3.csv("data/iris.csv").then((data) => {
           .on("start end", updateChart2));
   }
 })
-  //TODO: Barchart with counts of different species
-
-   
+//TODO: Barchart with counts of different species   
 
 // Find max y 
 let maxY_bar = 50;
-
 
 // Create y scale   
 let yScale_bar = d3.scaleLinear()
@@ -215,36 +212,35 @@ let xScale_bar = d3.scaleBand()
             .range([margin.left, width - margin.right])
             .padding(0.1); 
     
-    // Add x axis 
-    svg3.append("g")
-        .attr("transform", `translate(0,${height - margin.bottom})`) 
-        .call(d3.axisBottom(xScale_bar) 
-            .tickFormat(i => data_bars[i].name))  
-        .attr("font-size", '20px');
+// Add x axis 
+svg3.append("g")
+    .attr("transform", `translate(0,${height - margin.bottom})`) 
+    .call(d3.axisBottom(xScale_bar) 
+        .tickFormat(i => data_bars[i].name))  
+    .attr("font-size", '20px');
 
-    
 
-    // Create Y scale
-    let y1 = d3.scaleLinear()
-                .domain([0, maxY_bar])
-                .range([height - margin.bottom, margin.top]); 
+// Create Y scale
+let y1 = d3.scaleLinear()
+            .domain([0, maxY_bar])
+            .range([height - margin.bottom, margin.top]); 
 
-    // Add y axis 
-    svg3.append("g")
-        .attr("transform", `translate(${margin.left}, 0)`) 
-        .call(d3.axisLeft(yScale_bar)) 
-        .attr("font-size", '20px');
+// Add y axis 
+svg3.append("g")
+    .attr("transform", `translate(${margin.left}, 0)`) 
+    .call(d3.axisLeft(yScale_bar)) 
+    .attr("font-size", '20px');
 
-    // Add points
-    bars = svg3.selectAll(".bar")
-                          .data(data_bars)
-                          .enter()
-                          .append("rect") 
-                           .attr("class", "bar") 
-                           .attr("x", (d,i) => xScale_bar(i)) 
-                           .attr("y", (d) => yScale_bar(d.count)) 
-                           .attr("height", (d) => (height - margin.bottom) - yScale_bar(d.count)) 
-                           .attr("width", xScale_bar.bandwidth()) 
+// Add points
+bars = svg3.selectAll(".bar")
+            .data(data_bars)
+            .enter()
+            .append("rect") 
+             .attr("class", "bar") 
+             .attr("x", (d,i) => xScale_bar(i)) 
+             .attr("y", (d) => yScale_bar(d.count)) 
+             .attr("height", (d) => (height - margin.bottom) - yScale_bar(d.count)) 
+             .attr("width", xScale_bar.bandwidth()) 
 
 
   

@@ -241,17 +241,17 @@ let xScale_bar = d3.scaleBand()
 
     // Add points
     bars = svg3.selectAll(".bar")
-                            .data(data_bars)
-                            .enter()
-                            .append("rect") 
-                             .attr("class", "bar") 
-                             .attr("x", (d,i) => xScale_bar(i)) 
-                             .attr("y", (d) => yScale_bar(d.count)) 
-                             .attr("height", (d) => (height - margin.bottom) - yScale_bar(d.count)) 
-                             .attr("width", xScale_bar.bandwidth()) 
+                          .data(data_bars)
+                          .enter()
+                          .append("rect") 
+                           .attr("class", "bar") 
+                           .attr("x", (d,i) => xScale_bar(i)) 
+                           .attr("y", (d) => yScale_bar(d.count)) 
+                           .attr("height", (d) => (height - margin.bottom) - yScale_bar(d.count)) 
+                           .attr("width", xScale_bar.bandwidth()) 
+
 
   
-    
  
   
 

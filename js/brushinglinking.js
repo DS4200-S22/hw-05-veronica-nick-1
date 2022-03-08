@@ -238,7 +238,7 @@ bars = svg3.selectAll(".bar")
             .append("rect") 
              .attr("class", "bar") 
              .attr("x", (d,i) => xScale_bar(i)) 
-             .attr("y", (d) => yScale_bar(d.count)) 
+             .attr("y", (d) => yScale_bar(maxY_bar)) 
              .attr("height", (d) => height - margin.bottom - (yScale_bar(maxY_bar))) 
              .attr("width", xScale_bar.bandwidth()) 
 

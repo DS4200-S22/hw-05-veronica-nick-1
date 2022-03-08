@@ -242,10 +242,6 @@ bars = svg3.selectAll(".bar")
              .attr("height", (d) => height - margin.bottom - (yScale_bar(maxY_bar))) 
              .attr("width", xScale_bar.bandwidth())
              .style("fill", (d) => color(d.name)) 
-
-
-//(height - margin.bottom) - yScale_bar(d.count)
-  
  
   
 
@@ -262,6 +258,10 @@ bars = svg3.selectAll(".bar")
   function updateChart1(brushEvent) {
       
       //TODO: Find coordinates of brushed region 
+      extent = d3.event.selection
+
+      isBrushed = extent[0][0] <= circle.attr("cx") && extent[1][0] >= circle.attr("cx") && // Check X coordinate
+                  extent[0][1] <= circle.attr("cy") && extent[1][1] >= circle.attr("cy")
   
       //TODO: Give bold outline to all points within the brush region in Scatterplot1
 

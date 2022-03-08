@@ -212,15 +212,15 @@ d3.csv("data/iris.csv").then((data) => {
     let yKey1 = "Count";
 
     // Find max y value to plot  
-let maxY1 = d3.max(count_data, function(d) { return d.score; });
+let maxY_bar = d3.max(count_data, function(d) { return d.score; });
 
 // Create y scale   
-let yScale1 = d3.scaleLinear()
-            .domain([0,maxY1])
+let yScale_bar = d3.scaleLinear()
+            .domain([0,maxY_bar])
             .range([height-margin.bottom,margin.top]); 
 
 // Create x scale
-let xScale1 = d3.scaleBand()
+let xScale_bar = d3.scaleBand()
             .domain(d3.range(count_data.length))
             .range([margin.left, width - margin.right])
             .padding(0.1); 
@@ -228,22 +228,22 @@ let xScale1 = d3.scaleBand()
     // Add x axis 
     svg3.append("g")
         .attr("transform", `translate(0,${height - margin.bottom})`) 
-        .call(d3.axisBottom(xScale1) 
+        .call(d3.axisBottom(xScale_bar) 
             .tickFormat(i => count_data[i].name))  
         .attr("font-size", '20px');
 
     // Find max y 
-    let maxY1 = d3.max(count_data, (d) => { return d.count; });
+    let maxY_bar = d3.max(count_data, (d) => { return d.count; });
 
     // Create Y scale
     let y1 = d3.scaleLinear()
-                .domain([0, maxY1])
+                .domain([0, maxY_bar])
                 .range([height - margin.bottom, margin.top]); 
 
     // Add y axis 
     svg3.append("g")
         .attr("transform", `translate(${margin.left}, 0)`) 
-        .call(d3.axisLeft(yScale1)) 
+        .call(d3.axisLeft(yScale_bar)) 
         .attr("font-size", '20px');
 
     // Add points
@@ -252,10 +252,10 @@ let xScale1 = d3.scaleBand()
                             .enter()
                             .append("rect") 
                              .attr("class", "bar") 
-                             .attr("x", (d,i) => xScale1(i)) 
-                             .attr("y", (d) => yScale1(d.score)) 
-                             .attr("height", (d) => (height - margin.bottom) - yScale1(d.score)) 
-                             .attr("width", xScale1.bandwidth()) 
+                             .attr("x", (d,i) => xScale_bar(i)) 
+                             .attr("y", (d) => yScale_bar(d.count)) 
+                             .attr("height", (d) => (height - margin.bottom) - yScale_bar(d.count)) 
+                             .attr("width", xScale_bar.bandwidth()) 
 
   
     

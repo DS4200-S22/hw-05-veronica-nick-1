@@ -198,8 +198,6 @@ d3.csv("data/iris.csv").then((data) => {
 })
   //TODO: Barchart with counts of different species
 
-
-
    
 
 // Find max y 

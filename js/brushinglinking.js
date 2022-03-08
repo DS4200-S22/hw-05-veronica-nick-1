@@ -195,9 +195,7 @@ d3.csv("data/iris.csv").then((data) => {
           .extent([[0,0], [400,400]])
           .on("start end", updateChart2));
   }
-}
-)
-
+})
   //TODO: Barchart with counts of different species
 
 

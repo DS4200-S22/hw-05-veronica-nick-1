@@ -190,7 +190,7 @@ d3.csv("data/iris.csv").then((data) => {
     
     //TODO: Add brush2 to svg2
         svg2.call(d3.brush()
-          .extent([[0,0], [400,400]])
+          .extent([[0,0], [width + margin.left + margin.right, height + margin.top + margin.bottom]])
           .on("start end", updateChart2));
   }
 })

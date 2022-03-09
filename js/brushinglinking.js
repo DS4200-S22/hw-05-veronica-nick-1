@@ -263,8 +263,8 @@ bars = svg3.selectAll(".bar")
 
       myCircles1.classed("selected", function(d){ return isBrushed(extent, x(d.Sepal_Length), y(d.Petal_Length) ) } )
 
-      isBrushed = extent[0][0] <= myCircles1.attr("cx") && extent[1][0] >= myCircles1.attr("cx") && // Check X coordinate
-                  extent[0][1] <= myCircles1.attr("cy") && extent[1][1] >= myCircles1.attr("cy")
+      //isBrushed = extent[0][0] <= myCircles1.attr("cx") && extent[1][0] >= myCircles1.attr("cx") && // Check X coordinate
+                  //extent[0][1] <= myCircles1.attr("cy") && extent[1][1] >= myCircles1.attr("cy")
   
       //TODO: Give bold outline to all points within the brush region in Scatterplot1
       //myCircles1.classed("selected", isBrushed)

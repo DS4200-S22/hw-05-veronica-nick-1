@@ -122,21 +122,6 @@ d3.csv("data/iris.csv").then((data) => {
         svg1.call(d3.brush()
             .extent([[0, 0], [width + margin.left + margin.right, height + margin.top + margin.bottom]])
             .on("start brush", updateChart1));
-
-        // Call when Scatterplot1 is brushed 
-        function updateChart1(brushEvent) {
-            extent = d3.event.selection
-            myCircles1.classed("selected", function(d){ return isBrushed1(extent, x(d.Sepal_Length), y(d.Petal_Length) ) } )
-        }
-
-        // A function that return TRUE or FALSE according if a dot is in the selection or not
-        function isBrushed1(brush_coords, cx, cy) {
-            var x0 = brush_coords[0][0],
-                x1 = brush_coords[1][0],
-                y0 = brush_coords[0][1],
-                y1 = brush_coords[1][1];
-            return x0 <= cx && cx <= x1 && y0 <= cy && cy <= y1;
-        } 
         
     } 
     /*
@@ -272,6 +257,21 @@ function clear() {
   //TODO: add code to clear existing brush from svg2
   //svg2.call(brush2.move, null);
 }
+
+// Call when Scatterplot1 is brushed 
+function updateChart1(brushEvent) {
+    extent = d3.event.selection
+    myCircles1.classed("selected", function(d){ return isBrushed1(extent, x(d.Sepal_Length), y(d.Petal_Length) ) } )
+}
+
+// A function that return TRUE or FALSE according if a dot is in the selection or not
+function isBrushed1(brush_coords, cx, cy) {
+    var x0 = brush_coords[0][0],
+        x1 = brush_coords[1][0],
+        y0 = brush_coords[0][1],
+        y1 = brush_coords[1][1];
+    return x0 <= cx && cx <= x1 && y0 <= cy && cy <= y1;
+} 
 
 // // A function that return TRUE or FALSE according if a dot is in the selection or not
 // function isBrushed(brush_coords, cx, cy) {

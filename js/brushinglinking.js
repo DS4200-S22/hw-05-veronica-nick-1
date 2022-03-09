@@ -253,17 +253,20 @@ bars = svg3.selectAll(".bar")
       //TODO: add code to clear existing brush from svg2
   }
 
+  
+
   // Call when Scatterplot1 is brushed 
   function updateChart1(brushEvent) {
       
       //TODO: Find coordinates of brushed region 
       extent = d3.event.selection
+       myCircles1.classed("selected", function(d){ return isBrushed(extent, x(d.Sepal_Length), y(d.Petal_Length) ) } )
 
       isBrushed = extent[0][0] <= myCircles1.attr("cx") && extent[1][0] >= myCircles1.attr("cx") && // Check X coordinate
                   extent[0][1] <= myCircles1.attr("cy") && extent[1][1] >= myCircles1.attr("cy")
   
       //TODO: Give bold outline to all points within the brush region in Scatterplot1
-      myCircles1.classed("selected", isBrushed)
+      //myCircles1.classed("selected", isBrushed)
 
 
       // if (isBrushed){
@@ -281,6 +284,11 @@ bars = svg3.selectAll(".bar")
   function updateChart2(brushEvent) {
     
     //TODO: Find coordinates of brushed region 
+    extent = d3.event.selection
+       myCircles2.classed("selected", function(d){ return isBrushed(extent, x(d.Sepal_Length), y(d.Petal_Length) ) } )
+
+      isBrushed = extent[0][0] <= myCircles2.attr("cx") && extent[1][0] >= myCircles2.attr("cx") && // Check X coordinate
+                  extent[0][1] <= myCircles2.attr("cy") && extent[1][1] >= myCircles2.attr("cy")
 
     //TODO: Start an empty set that you can store names of selected species in 
   

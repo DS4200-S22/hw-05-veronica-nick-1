@@ -260,6 +260,7 @@ function clear() {
 
 // Call when Scatterplot1 is brushed 
 function updateChart1(brushEvent) {
+    print("update chart --- ");
     extent = d3.event.selection
     myCircles1.classed("selected", function(d){ return isBrushed1(extent, x(d.Sepal_Length), y(d.Petal_Length) ) } )
 }

@@ -114,7 +114,7 @@ d3.csv("data/iris.csv").then((data) => {
                 .attr("r", 8)
                 .style("fill", (d) => color(d.Species))
                 .style("opacity", 0.5)
-                .on("brush", updateChart1);
+                .on("start brush", updateChart1);
 
         //TODO: Define a brush (call it brush1)
         //let brush1;

@@ -113,16 +113,16 @@ d3.csv("data/iris.csv").then((data) => {
                 .attr("cy", (d) => y1(d[yKey1]))
                 .attr("r", 8)
                 .style("fill", (d) => color(d.Species))
-                .style("opacity", 0.5)
-                .on("start brush", updateChart1);
+                .style("opacity", 0.5);
+                //.on("start end", updateChart1);
 
         //TODO: Define a brush (call it brush1)
-        //let brush1;
+        let brush1;
     
         //TODO: Add brush1 to svg1
-        svg1.call(d3.brush()
+        svg1.call(d3.brush(brush1)
             .extent([[0, 0], [width + margin.left + margin.right, height + margin.top + margin.bottom]])
-            .on("start brush", updateChart1));
+            .on("start end", updateChart1));
         
     } 
     /*

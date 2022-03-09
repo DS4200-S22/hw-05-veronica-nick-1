@@ -4,11 +4,11 @@ body {
 }
 
 <!-- style of selected circles -->
-<style>
+
 .selected {
   fill: red;
   opacity: 1 !important;
   stroke:  black;
   stroke-width:  1px;
 }
-</style>
+

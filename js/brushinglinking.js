@@ -116,26 +116,28 @@ d3.csv("data/iris.csv").then((data) => {
                 .style("opacity", 0.5);
 
         //TODO: Define a brush (call it brush1)
-        let brush1;
+        //let brush1;
     
         //TODO: Add brush1 to svg1
         svg1.call(d3.brush()
             .extent([[0, 0], [width + margin.left + margin.right, height + margin.top + margin.bottom]])
-            .on("start end", updateChart1));
+            .on("start brush", updateChart1));
+
+        // Call when Scatterplot1 is brushed 
+        function updateChart1(brushEvent) {
+            extent = d3.event.selection
+            myCircles1.classed("selected", function(d){ return isBrushed1(extent, x(d.Sepal_Length), y(d.Petal_Length) ) } )
+        }
 
         // A function that return TRUE or FALSE according if a dot is in the selection or not
-        function isBrushed(brush_coords, cx, cy) {
+        function isBrushed1(brush_coords, cx, cy) {
             var x0 = brush_coords[0][0],
                 x1 = brush_coords[1][0],
                 y0 = brush_coords[0][1],
                 y1 = brush_coords[1][1];
             return x0 <= cx && cx <= x1 && y0 <= cy && cy <= y1;
         } 
-        // Call when Scatterplot1 is brushed 
-        function updateChart1(brushEvent) {
-            extent = d3.event.selection
-            myCircles1.classed("selected", function(d){ return isBrushed(extent, x(d.Sepal_Length), y(d.Petal_Length) ) } )
-        }
+        
     } 
 
     //TODO: Scatterplot 2 (show Sepal width on x-axis and Petal width on y-axis)

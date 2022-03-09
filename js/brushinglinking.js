@@ -261,8 +261,8 @@ function clear() {
 // Call when Scatterplot1 is brushed 
 function updateChart1(brushEvent) {
     print("update chart --- ");
-    extent = d3.event.selection
-    myCircles1.classed("selected", function(d){ return isBrushed1(extent, x(d.Sepal_Length), y(d.Petal_Length) ) } )
+    extent = d3.event.selection;
+    myCircles1.classed("selected", function(d){ return isBrushed1(extent, x(d.Sepal_Length), y(d.Petal_Length) ) } );
 }
 
 // A function that return TRUE or FALSE according if a dot is in the selection or not

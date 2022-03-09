@@ -174,7 +174,7 @@ d3.csv("data/iris.csv").then((data) => {
       );
 
     // Add points
-    const myCircles1 = svg2.selectAll("circle")
+    const myCircles2 = svg2.selectAll("circle")
                             .data(data)
                             .enter()
                               .append("circle")
@@ -186,7 +186,7 @@ d3.csv("data/iris.csv").then((data) => {
                               .style("opacity", 0.5);
 
     //TODO: Define a brush (call it brush1)
-    let brush1;
+    let brush2;
     
     //TODO: Add brush2 to svg2
     d3.select("#vis-holder")
@@ -251,6 +251,7 @@ bars = svg3.selectAll(".bar")
       svg1.call(brush1.move, null);
       
       //TODO: add code to clear existing brush from svg2
+      svg2.call(brush2.move, null);
   }
 
   

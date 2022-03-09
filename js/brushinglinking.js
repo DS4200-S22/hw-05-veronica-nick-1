@@ -238,7 +238,7 @@ d3.csv("data/iris.csv").then((data) => {
                  .style("fill", (d) => color(d.name)) 
     }
 
-}
+})
   
 
 

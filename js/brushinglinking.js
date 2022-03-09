@@ -270,7 +270,7 @@ function clear() {
   svg1.call(brush1.move, null);
   
   //TODO: add code to clear existing brush from svg2
-  svg2.call(brush2.move, null);
+  //svg2.call(brush2.move, null);
 }
 
 // // A function that return TRUE or FALSE according if a dot is in the selection or not
@@ -289,7 +289,7 @@ function clear() {
 // }
 
 
-
+/*
 // Call when Scatterplot2 is brushed 
 function updateChart2(brushEvent) {
 
@@ -309,6 +309,7 @@ extent = d3.event.selection
 //TODO: Give bold outline to all bars in bar chart with corresponding to species selected by Scatterplot2 brush
 
 }
+*/
 
     
 

@@ -113,7 +113,8 @@ d3.csv("data/iris.csv").then((data) => {
                 .attr("cy", (d) => y1(d[yKey1]))
                 .attr("r", 8)
                 .style("fill", (d) => color(d.Species))
-                .style("opacity", 0.5);
+                .style("opacity", 0.5)
+                .on("brush", updateChart1(brushEvent, d));
 
         //TODO: Define a brush (call it brush1)
         //let brush1;

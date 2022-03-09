@@ -260,7 +260,8 @@ bars = svg3.selectAll(".bar")
       
       //TODO: Find coordinates of brushed region 
       extent = d3.event.selection
-       myCircles1.classed("selected", function(d){ return isBrushed(extent, x(d.Sepal_Length), y(d.Petal_Length) ) } )
+
+      myCircles1.classed("selected", function(d){ return isBrushed(extent, x(d.Sepal_Length), y(d.Petal_Length) ) } )
 
       isBrushed = extent[0][0] <= myCircles1.attr("cx") && extent[1][0] >= myCircles1.attr("cx") && // Check X coordinate
                   extent[0][1] <= myCircles1.attr("cy") && extent[1][1] >= myCircles1.attr("cy")
@@ -278,7 +279,19 @@ bars = svg3.selectAll(".bar")
 
       //TODO: Give bold outline to all points in Scatterplot2 corresponding to points within the brush region in Scatterplot1
     
-  }
+    }
+
+    //Finds dots within the brushed region
+    function isBrushed(brush_coords, cx, cy) {
+      if (brush_coords === null) return;
+
+      var x0 = brush_coords[0][0],
+        x1 = brush_coords[1][0],
+        y0 = brush_coords[0][1],
+        y1 = brush_coords[1][1];
+      return x0 <= cx && cx <= x1 && y0 <= cy && cy <= y1; // This return TRUE or FALSE depending on if the points is in the selected area
+    };
+
 
   // Call when Scatterplot2 is brushed 
   function updateChart2(brushEvent) {
@@ -300,15 +313,6 @@ bars = svg3.selectAll(".bar")
 
   }
 
-    //Finds dots within the brushed region
-    function isBrushed(brush_coords, cx, cy) {
-      if (brush_coords === null) return;
-
-      var x0 = brush_coords[0][0],
-        x1 = brush_coords[1][0],
-        y0 = brush_coords[0][1],
-        y1 = brush_coords[1][1];
-      return x0 <= cx && cx <= x1 && y0 <= cy && cy <= y1; // This return TRUE or FALSE depending on if the points is in the selected area
-    };
+    
 
 

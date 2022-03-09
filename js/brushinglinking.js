@@ -120,8 +120,7 @@ d3.csv("data/iris.csv").then((data) => {
     let brush1;
     
     //TODO: Add brush1 to svg1
-      d3.select("#vis-holder")
-      .call(d3.brush()
+      svg1.call(d3.brush()
           .extent([[0, 0], [width - margin.left - margin.right, height - margin.top - margin.bottom]])
           .on("start end", updateChart1));
   }
@@ -190,8 +189,7 @@ d3.csv("data/iris.csv").then((data) => {
     let brush2;
     
     //TODO: Add brush2 to svg2
-    d3.select("#vis-holder")
-        .call(d3.brush()
+        svg2.call(d3.brush()
           .extent([[0,0], [400,400]])
           .on("start end", updateChart2));
   }

@@ -103,7 +103,7 @@ d3.csv("data/iris.csv").then((data) => {
                 .text(yKey1));
 
         // Add points
-        const myCircles1 = svg1.append('g')
+        var myCircles1 = svg1.append('g')
             .selectAll("circle")
             .data(data)
             .enter()

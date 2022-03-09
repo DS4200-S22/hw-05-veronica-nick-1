@@ -139,7 +139,7 @@ d3.csv("data/iris.csv").then((data) => {
         } 
         
     } 
-
+    /*
     //TODO: Scatterplot 2 (show Sepal width on x-axis and Petal width on y-axis)
     {
         // Scatterplot2 code here 
@@ -254,6 +254,7 @@ d3.csv("data/iris.csv").then((data) => {
                  .attr("width", xScale_bar.bandwidth())
                  .style("fill", (d) => color(d.name)) 
     }
+    */
 
 })
   

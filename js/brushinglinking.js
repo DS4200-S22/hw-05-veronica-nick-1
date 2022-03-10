@@ -117,12 +117,14 @@ d3.csv("data/iris.csv").then((data) => {
                 //.on("brush", updateChart1);
 
         //TODO: Define a brush (call it brush1)
-        let brush1;
+        let brush1 = d3.brush()
+            .extent([[0, 0], [width + margin.left + margin.right, height + margin.top + margin.bottom]]);
     
         //TODO: Add brush1 to svg1
         svg1.call(d3.brush(brush1)
-            .extent([[0, 0], [width + margin.left + margin.right, height + margin.top + margin.bottom]])
-            .on("brush", updateChart1));
+            //.extent([[0, 0], [width + margin.left + margin.right, height + margin.top + margin.bottom]])
+            .on("brush", updateChart1))
+            .on("start", clear);
         
     } 
     
@@ -186,12 +188,14 @@ d3.csv("data/iris.csv").then((data) => {
               //.on("start brush", updateChart2);
 
         //TODO: Define a brush (call it brush1)
-        let brush2;
+        let brush2 = d3.brush()
+            .extent([[0,0], [width + margin.left + margin.right, height + margin.top + margin.bottom]]);
     
         //TODO: Add brush2 to svg2
         svg2.call(d3.brush(brush2)
-          .extent([[0,0], [width + margin.left + margin.right, height + margin.top + margin.bottom]])
-          .on("brush", updateChart2));
+          //.extent([[0,0], [width + margin.left + margin.right, height + margin.top + margin.bottom]])
+          .on("brush", updateChart2)
+          .on("start", clear));
 
         // Call when Scatterplot1 is brushed 
         function updateChart1(brushEvent) {
@@ -286,9 +290,7 @@ d3.csv("data/iris.csv").then((data) => {
 // Call to removes existing brushes 
 function clear() {
   svg1.call(brush1.move, null);
-  
-  //TODO: add code to clear existing brush from svg2
-  //svg2.call(brush2.move, null);
+  svg2.call(brush2.move, null);
 }
 
 

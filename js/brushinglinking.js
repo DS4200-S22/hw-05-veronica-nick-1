@@ -124,7 +124,8 @@ d3.csv("data/iris.csv").then((data) => {
         svg1.call(d3.brush(brush1)
             //.extent([[0, 0], [width + margin.left + margin.right, height + margin.top + margin.bottom]])
             .on("brush", updateChart1))
-            .on("start", clear);
+            .on("start", clear)
+            .style("stroke", "#000");
         
     } 
     

@@ -3,10 +3,9 @@ body {
   font-family: Arial;
 }
 
-<!-- style of selected circles -->
+
 
 .selected {
-  fill: red;
   opacity: 1 !important;
   stroke:  black;
   stroke-width:  1px;

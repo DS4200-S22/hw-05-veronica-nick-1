@@ -114,7 +114,7 @@ d3.csv("data/iris.csv").then((data) => {
                 .attr("r", 8)
                 .style("fill", (d) => color(d.Species))
                 .style("opacity", 0.5);
-                //.on("start end", updateChart1);
+                .on("start brush", updateChart1);
 
         //TODO: Define a brush (call it brush1)
         let brush1;
@@ -122,10 +122,10 @@ d3.csv("data/iris.csv").then((data) => {
         //TODO: Add brush1 to svg1
         svg1.call(d3.brush(brush1)
             .extent([[0, 0], [width + margin.left + margin.right, height + margin.top + margin.bottom]])
-            .on("start end", updateChart1));
+            .on("start brush", updateChart1));
         
     } 
-    /*
+    
     //TODO: Scatterplot 2 (show Sepal width on x-axis and Petal width on y-axis)
     {
         // Scatterplot2 code here 
@@ -173,7 +173,7 @@ d3.csv("data/iris.csv").then((data) => {
             .text(yKey1));
 
         // Add points
-        const myCircles2 = svg2.selectAll("circle")
+        var myCircles2 = svg2.selectAll("circle")
             .data(data)
             .enter()
               .append("circle")
@@ -182,19 +182,53 @@ d3.csv("data/iris.csv").then((data) => {
               .attr("cy", (d) => y1(d[yKey1]))
               .attr("r", 8)
               .style("fill", (d) => color(d.Species))
-              .style("opacity", 0.5);
+              .style("opacity", 0.5)
+              .on("start brush", updateChart2);
 
         //TODO: Define a brush (call it brush1)
         let brush2;
     
         //TODO: Add brush2 to svg2
-        svg2.call(d3.brush()
+        svg2.call(d3.brush(brush2)
           .extent([[0,0], [width + margin.left + margin.right, height + margin.top + margin.bottom]])
           .on("start end", updateChart2));
+
+        // Call when Scatterplot1 is brushed 
+        function updateChart1(brushEvent) {
+            extent = d3.event.selection();
+            myCircles1.classed("selected", function(d){ return isBrushed(extent, x(d.Sepal_Length), y(d.Petal_Length) ) } );
+            myCircles2.classed("selected", function(d){ return isBrushed(extent, x(d.Sepal_Length), y(d.Petal_Length) ) } );
+        }
+
+        // Call when Scatterplot2 is brushed 
+        function updateChart2(brushEvent) {
+            selected_specie = d.Species;
+            extent = d3.event.selection();
+
+            selected_species = {};
+            
+            myCircles1.classed("selected", function(d){ return isBrushed(extent, x(d.Sepal_Length), y(d.Petal_Length) ) } );
+            myCircles2.classed("selected", function(d){ is_selected = isBrushed(extent, x(d.Sepal_Length), y(d.Petal_Length));
+                if(is_selected){
+                    selected_species.add(d.Species);
+                }
+                return is_selected;});
+            myBars.classed("selected", function(d){ return selected_species.has(d.Species) });
+        }
+
+        // A function that return TRUE or FALSE according if a dot is in the selection or not
+        function isBrushed(brush_coords, cx, cy) {
+            var x0 = brush_coords[0][0],
+                x1 = brush_coords[1][0],
+                y0 = brush_coords[0][1],
+                y1 = brush_coords[1][1];
+            return x0 <= cx && cx <= x1 && y0 <= cy && cy <= y1;
+        }
     }
 
     //TODO: Barchart with counts of different species 
     {
+
         // Find max y 
         let maxY_bar = 50;
 
@@ -229,7 +263,7 @@ d3.csv("data/iris.csv").then((data) => {
             .attr("font-size", '20px');
 
         // Add points
-        bars = svg3.selectAll(".bar")
+        myBars = svg3.selectAll(".bar")
                 .data(data_bars)
                 .enter()
                 .append("rect") 
@@ -240,7 +274,7 @@ d3.csv("data/iris.csv").then((data) => {
                  .attr("width", xScale_bar.bandwidth())
                  .style("fill", (d) => color(d.name)) 
     }
-    */
+    
 
 })
   
@@ -259,20 +293,7 @@ function clear() {
   //svg2.call(brush2.move, null);
 }
 
-// Call when Scatterplot1 is brushed 
-function updateChart1(brushEvent) {
-    extent = d3.event.selection;
-    myCircles1.classed("selected", function(d){ return isBrushed1(extent, x(d.Sepal_Length), y(d.Petal_Length) ) } );
-}
 
-// A function that return TRUE or FALSE according if a dot is in the selection or not
-function isBrushed1(brush_coords, cx, cy) {
-    var x0 = brush_coords[0][0],
-        x1 = brush_coords[1][0],
-        y0 = brush_coords[0][1],
-        y1 = brush_coords[1][1];
-    return x0 <= cx && cx <= x1 && y0 <= cy && cy <= y1;
-} 
 
 // // A function that return TRUE or FALSE according if a dot is in the selection or not
 // function isBrushed(brush_coords, cx, cy) {

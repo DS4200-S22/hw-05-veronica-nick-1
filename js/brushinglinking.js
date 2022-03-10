@@ -129,48 +129,48 @@ d3.csv("data/iris.csv").then((data) => {
     //TODO: Scatterplot 2 (show Sepal width on x-axis and Petal width on y-axis)
     {
         // Scatterplot2 code here 
-        let xKey1 = "Sepal_Width";
-        let yKey1 = "Petal_Width";
+        let xKey2 = "Sepal_Width";
+        let yKey2 = "Petal_Width";
 
         // Find max x
-        let maxX1 = d3.max(data, (d) => { return d[xKey1]; });
+        let maxX2 = d3.max(data, (d) => { return d[xKey2]; });
 
         // Create X scale
-        let x1 = d3.scaleLinear()
+        let x2 = d3.scaleLinear()
             .domain([0,maxX1])
             .range([margin.left, width-margin.right]); 
     
         // Add x axis 
         svg2.append("g")
             .attr("transform", `translate(0,${height - margin.bottom})`) 
-            .call(d3.axisBottom(x1))   
+            .call(d3.axisBottom(x2))   
             .attr("font-size", '20px')
             .call((g) => g.append("text")
             .attr("x", width - margin.right)
             .attr("y", margin.bottom - 4)
             .attr("fill", "black")
             .attr("text-anchor", "end")
-            .text(xKey1));
+            .text(xKey2));
 
         // Finx max y 
-        let maxY1 = d3.max(data, (d) => { return d[yKey1]; });
+        let maxY2 = d3.max(data, (d) => { return d[yKey2]; });
 
         // Create Y scale
-        let y1 = d3.scaleLinear()
-            .domain([0, maxY1])
+        let y2 = d3.scaleLinear()
+            .domain([0, maxY2])
             .range([height - margin.bottom, margin.top]); 
 
         // Add y axis 
         svg2.append("g")
             .attr("transform", `translate(${margin.left}, 0)`) 
-            .call(d3.axisLeft(y1)) 
+            .call(d3.axisLeft(y2)) 
             .attr("font-size", '20px') 
             .call((g) => g.append("text")
             .attr("x", 0)
             .attr("y", margin.top)
             .attr("fill", "black")
             .attr("text-anchor", "end")
-            .text(yKey1));
+            .text(yKey2));
 
         // Add points
         var myCircles2 = svg2.selectAll("circle")
@@ -178,8 +178,8 @@ d3.csv("data/iris.csv").then((data) => {
             .enter()
               .append("circle")
               .attr("id", (d) => d.id)
-              .attr("cx", (d) => x1(d[xKey1]))
-              .attr("cy", (d) => y1(d[yKey1]))
+              .attr("cx", (d) => x1(d[xKey2]))
+              .attr("cy", (d) => y1(d[yKey2]))
               .attr("r", 8)
               .style("fill", (d) => color(d.Species))
               .style("opacity", 0.5)

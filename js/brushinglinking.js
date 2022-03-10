@@ -113,8 +113,8 @@ d3.csv("data/iris.csv").then((data) => {
                 .attr("cy", (d) => y1(d[yKey1]))
                 .attr("r", 8)
                 .style("fill", (d) => color(d.Species))
-                .style("opacity", 0.5)
-                .on("start brush", updateChart1);
+                .style("opacity", 0.5);
+                //.on("brush", updateChart1);
 
         //TODO: Define a brush (call it brush1)
         let brush1;
@@ -122,7 +122,7 @@ d3.csv("data/iris.csv").then((data) => {
         //TODO: Add brush1 to svg1
         svg1.call(d3.brush(brush1)
             .extent([[0, 0], [width + margin.left + margin.right, height + margin.top + margin.bottom]])
-            .on("start brush", updateChart1));
+            .on("brush", updateChart1));
         
     } 
     
@@ -182,8 +182,8 @@ d3.csv("data/iris.csv").then((data) => {
               .attr("cy", (d) => y2(d[yKey2]))
               .attr("r", 8)
               .style("fill", (d) => color(d.Species))
-              .style("opacity", 0.5)
-              .on("start brush", updateChart2);
+              .style("opacity", 0.5);
+              //.on("start brush", updateChart2);
 
         //TODO: Define a brush (call it brush1)
         let brush2;
@@ -191,7 +191,7 @@ d3.csv("data/iris.csv").then((data) => {
         //TODO: Add brush2 to svg2
         svg2.call(d3.brush(brush2)
           .extent([[0,0], [width + margin.left + margin.right, height + margin.top + margin.bottom]])
-          .on("start end", updateChart2));
+          .on("brush", updateChart2));
 
         // Call when Scatterplot1 is brushed 
         function updateChart1(brushEvent) {

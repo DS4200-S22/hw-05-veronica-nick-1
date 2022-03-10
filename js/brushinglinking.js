@@ -196,8 +196,8 @@ d3.csv("data/iris.csv").then((data) => {
         // Call when Scatterplot1 is brushed 
         function updateChart1(brushEvent) {
             extent = brushEvent.selection;
-            myCircles1.classed("selected", function(d){ return isBrushed(extent, x1(d.Sepal_Width), y1(d.Petal_Length) ) } );
-            myCircles2.classed("selected", function(d){ return isBrushed(extent, x1(d.Sepal_Width), y1(d.Petal_Length) ) } );
+            myCircles1.classed("selected", function(d){ return isBrushed(extent, x1(d.Sepal_Length), y1(d.Petal_Length) ) } );
+            myCircles2.classed("selected", function(d){ return isBrushed(extent, x1(d.Sepal_Length), y1(d.Petal_Length) ) } );
         }
 
         // Call when Scatterplot2 is brushed 
@@ -205,8 +205,8 @@ d3.csv("data/iris.csv").then((data) => {
             extent = brushEvent.selection;
             selected_species = new Set();
             
-            myCircles1.classed("selected", function(d){ return isBrushed(extent, x2(d.Sepal_Width), y2(d.Petal_Length) ) } );
-            myCircles2.classed("selected", function(d){ is_selected = isBrushed(extent, x2(d.Sepal_Width), y2(d.Petal_Length));
+            myCircles1.classed("selected", function(d){ return isBrushed(extent, x2(d.Sepal_Width), y2(d.Petal_Width) ) } );
+            myCircles2.classed("selected", function(d){ is_selected = isBrushed(extent, x2(d.Sepal_Width), y2(d.Petal_Width));
                 if(is_selected){
                     selected_species.add(d.Species);
                 }

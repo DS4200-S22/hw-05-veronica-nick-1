@@ -202,7 +202,7 @@ d3.csv("data/iris.csv").then((data) => {
 
         // Call when Scatterplot2 is brushed 
         function updateChart2(brushEvent) {
-            selected_specie = d.Species;
+            selected_species = d.Species;
             extent = d3.event.selection();
 
             selected_species = {};

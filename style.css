@@ -5,9 +5,9 @@ body {
 
 
 
-.selected {
+.selected:hover {
   opacity: .5;
   stroke:  black;
-  stroke-width: 5%;
+  stroke-width: 10px;
 }
 

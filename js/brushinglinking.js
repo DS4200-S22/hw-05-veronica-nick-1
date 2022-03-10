@@ -278,61 +278,15 @@ d3.csv("data/iris.csv").then((data) => {
     }
     
 
+    // Call to removes existing brushes 
+    function clear() {
+      svg1.call(brush1.move, null);
+      svg2.call(brush2.move, null);
+    }
+
 })
-  
-
-
- 
-  
 
 //Brushing Code---------------------------------------------------------------------------------------------
 
-// Call to removes existing brushes 
-function clear() {
-  svg1.call(brush1.move, null);
-  svg2.call(brush2.move, null);
-}
-
-
-
-// // A function that return TRUE or FALSE according if a dot is in the selection or not
-// function isBrushed(brush_coords, cx, cy) {
-//     var x0 = brush_coords[0][0],
-//         x1 = brush_coords[1][0],
-//         y0 = brush_coords[0][1],
-//         y1 = brush_coords[1][1];
-//     return x0 <= cx && cx <= x1 && y0 <= cy && cy <= y1; 
-// }
-
-// Call when Scatterplot1 is brushed 
-// function updateChart1(brushEvent) {
-//     extent = d3.event.selection
-//     myCircles1.classed("selected", function(d){ return isBrushed(extent, x(d.Sepal_Length), y(d.Petal_Length) ) } )
-// }
-
-
-/*
-// Call when Scatterplot2 is brushed 
-function updateChart2(brushEvent) {
-
-//TODO: Find coordinates of brushed region 
-extent = d3.event.selection
-   myCircles2.classed("selected", function(d){ return isBrushed(extent, x(d.Sepal_Length), y(d.Petal_Length) ) } )
-
-  isBrushed = extent[0][0] <= myCircles2.attr("cx") && extent[1][0] >= myCircles2.attr("cx") && // Check X coordinate
-              extent[0][1] <= myCircles2.attr("cy") && extent[1][1] >= myCircles2.attr("cy")
-
-//TODO: Start an empty set that you can store names of selected species in 
-
-//TODO: Give bold outline to all points within the brush region in Scatterplot2 & collected names of brushed species
-
-//TODO: Give bold outline to all points in Scatterplot1 corresponding to points within the brush region in Scatterplot2
-
-//TODO: Give bold outline to all bars in bar chart with corresponding to species selected by Scatterplot2 brush
-
-}
-*/
-
-    
 
 

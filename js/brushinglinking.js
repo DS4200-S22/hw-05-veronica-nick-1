@@ -205,7 +205,7 @@ d3.csv("data/iris.csv").then((data) => {
             //selected_species = d.Species;
             extent = brushEvent.selection;
 
-            selected_species = {};
+            selected_species = new Set();
             
             myCircles1.classed("selected", function(d){ return isBrushed(extent, x1(d.Sepal_Width), y1(d.Petal_Length) ) } );
             myCircles2.classed("selected", function(d){ is_selected = isBrushed(extent, x2(d.Sepal_Width), y2(d.Petal_Length));

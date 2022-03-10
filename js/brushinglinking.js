@@ -59,14 +59,14 @@ d3.csv("data/iris.csv").then((data) => {
 
     // Scatterplot1
     {
-        let xKey1 = "Sepal_Length";
-        let yKey1 = "Petal_Length";
+        xKey1 = "Sepal_Length";
+        yKey1 = "Petal_Length";
 
         // Find max x
         let maxX1 = d3.max(data, (d) => { return d[xKey1]; });
 
         // Create X scale
-        let x1 = d3.scaleLinear()
+        x1 = d3.scaleLinear()
             .domain([0,maxX1])
             .range([margin.left, width-margin.right]); 
     
@@ -86,7 +86,7 @@ d3.csv("data/iris.csv").then((data) => {
         let maxY1 = d3.max(data, (d) => { return d[yKey1]; });
 
         // Create Y scale
-        let y1 = d3.scaleLinear()
+        y1 = d3.scaleLinear()
             .domain([0, maxY1])
             .range([height - margin.bottom, margin.top]); 
 
@@ -129,14 +129,14 @@ d3.csv("data/iris.csv").then((data) => {
     //TODO: Scatterplot 2 (show Sepal width on x-axis and Petal width on y-axis)
     {
         // Scatterplot2 code here 
-        let xKey2 = "Sepal_Width";
-        let yKey2 = "Petal_Width";
+        xKey2 = "Sepal_Width";
+        yKey2 = "Petal_Width";
 
         // Find max x
         let maxX2 = d3.max(data, (d) => { return d[xKey2]; });
 
         // Create X scale
-        let x2 = d3.scaleLinear()
+        x2 = d3.scaleLinear()
             .domain([0,maxX2])
             .range([margin.left, width-margin.right]); 
     
@@ -156,7 +156,7 @@ d3.csv("data/iris.csv").then((data) => {
         let maxY2 = d3.max(data, (d) => { return d[yKey2]; });
 
         // Create Y scale
-        let y2 = d3.scaleLinear()
+        y2 = d3.scaleLinear()
             .domain([0, maxY2])
             .range([height - margin.bottom, margin.top]); 
 

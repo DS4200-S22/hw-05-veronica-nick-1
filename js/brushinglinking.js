@@ -125,7 +125,7 @@ d3.csv("data/iris.csv").then((data) => {
             //.extent([[0, 0], [width + margin.left + margin.right, height + margin.top + margin.bottom]])
             .on("brush", updateChart1))
             .on("start", clear)
-            .style("opacity": 1);
+            .style("opacity", 1);
         
     } 
     

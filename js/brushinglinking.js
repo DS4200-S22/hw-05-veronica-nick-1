@@ -195,7 +195,7 @@ d3.csv("data/iris.csv").then((data) => {
 
         // Call when Scatterplot1 is brushed 
         function updateChart1(brushEvent) {
-            extent = brushEvent.selection();
+            extent = brushEvent.selection;
             myCircles1.classed("selected", function(d){ return isBrushed(extent, x(d.Sepal_Length), y(d.Petal_Length) ) } );
             myCircles2.classed("selected", function(d){ return isBrushed(extent, x(d.Sepal_Length), y(d.Petal_Length) ) } );
         }
@@ -203,7 +203,7 @@ d3.csv("data/iris.csv").then((data) => {
         // Call when Scatterplot2 is brushed 
         function updateChart2(brushEvent) {
             //selected_species = d.Species;
-            extent = brushEvent.selection();
+            extent = brushEvent.selection;
 
             selected_species = {};
             
